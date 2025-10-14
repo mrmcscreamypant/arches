@@ -1,10 +1,10 @@
-import { Scene, GameObjects } from 'phaser';
+import * as Phaser from 'phaser';
 
-export class MainMenu extends Scene
+export class MainMenu extends Phaser.Scene
 {
-    background: GameObjects.Image;
-    logo: GameObjects.Image;
-    title: GameObjects.Text;
+    background: Phaser.GameObjects.Image;
+    logo: Phaser.GameObjects.Image;
+    title: Phaser.GameObjects.Text;
 
     constructor ()
     {

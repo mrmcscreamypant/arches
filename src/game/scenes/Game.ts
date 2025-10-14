@@ -1,35 +1,29 @@
-import { Scene } from 'phaser';
+import * as Phaser from 'phaser';
+import Player from '../entities/Player';
+import Entity from '../entities/Entity';
 
-export class Game extends Scene
-{
+export class Game extends Phaser.Scene {
     camera: Phaser.Cameras.Scene2D.Camera;
     background: Phaser.GameObjects.Image;
-    msg_text : Phaser.GameObjects.Text;
+    msg_text: Phaser.GameObjects.Text;
 
-    constructor ()
-    {
+    public constructor() {
         super('Game');
     }
 
-    create ()
-    {
+    public create(){
         this.camera = this.cameras.main;
         this.camera.setBackgroundColor(0x00ff00);
 
         this.background = this.add.image(512, 384, 'background');
         this.background.setAlpha(0.5);
 
-        this.msg_text = this.add.text(512, 384, 'Make something fun!\nand share it with us:\nsupport@phaser.io', {
-            fontFamily: 'Arial Black', fontSize: 38, color: '#ffffff',
-            stroke: '#000000', strokeThickness: 8,
-            align: 'center'
-        });
-        this.msg_text.setOrigin(0.5);
+        this.add.existing(new Player(this,0,0,""));
+    }
 
-        this.input.once('pointerdown', () => {
-
-            this.scene.start('GameOver');
-
-        });
+    public addEntity<E extends Entity>(entity: E): E {
+        this.add.existing(entity);
+        entity.init();
+        return entity;
     }
 }
