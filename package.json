@@ -1,0 +1,11 @@
+{
+    "devDependencies": {
+        "vite": "^7.1.10"
+    },
+    "scripts": {
+        "dev": "vite . --host"
+    },
+    "dependencies": {
+        "phaser": "^3.90.0"
+    }
+}
