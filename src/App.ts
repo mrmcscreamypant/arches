@@ -1,6 +1,8 @@
 import * as Phaser from 'phaser';
 
 import Example from './Example';
+import Boot from './Boot';
+import Loading from './Loading';
 
 export default class App extends Phaser.Game {
     constructor() {
@@ -8,7 +10,11 @@ export default class App extends Phaser.Game {
             type: Phaser.AUTO,
             width: 1024,
             height: 768,
-            scene: Example,
+            scene: [
+                Boot,
+                Example,
+                Loading
+            ],
             parent: "game-container",
             physics: {
                 default: 'arcade',
