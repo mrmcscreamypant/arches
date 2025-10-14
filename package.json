@@ -8,6 +8,7 @@
         "preview": "vite preview . --host"
     },
     "dependencies": {
+        "dataclass": "^2.1.1",
         "phaser": "^3.90.0"
     }
 }

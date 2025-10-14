@@ -1,10 +1,19 @@
-export default class Example extends Phaser.Scene {
-    preload() {
-        this.load.setBaseURL('https://cdn.phaserfiles.com/v385');
+import * as Phaser from 'phaser';
+import Loading, { Asset, LoadingTypes } from './Loading';
 
-        this.load.image('sky', 'assets/skies/space3.png');
-        this.load.image('logo', 'assets/sprites/phaser3-logo.png');
-        this.load.image('red', 'assets/particles/red.png');
+import phaserLogo from './assets/phaser-logo.png?url';
+
+export default class Example extends Phaser.Scene {
+    constructor() {
+        super("Example");
+        Loading.toLoad.push(Asset.create({
+            key:"logo",
+            url:phaserLogo,
+            type:LoadingTypes.IMAGE
+        }));
+    }
+
+    preload() {
     }
 
     create() {

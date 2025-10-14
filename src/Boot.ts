@@ -8,7 +8,6 @@ export default class Boot extends Phaser.Scene {
 
     public preload() {
         this.load.path = ".";
-        console.log(loadingImage);
         this.load.svg("loadingBG", loadingImage);
     }
 

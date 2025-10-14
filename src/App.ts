@@ -8,8 +8,7 @@ export default class App extends Phaser.Game {
     constructor() {
         super({
             type: Phaser.AUTO,
-            width: 1024,
-            height: 768,
+            mode: Phaser.Scale.RESIZE,
             scene: [
                 Boot,
                 Example,
