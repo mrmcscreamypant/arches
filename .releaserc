@@ -1,3 +1,5 @@
 {
-  "branches": ["master", "next"]
+    "branches": [
+        "deployment-stable"
+    ]
 }
