@@ -1,0 +1,49 @@
+import * as Phaser from 'phaser';
+import loadingBackground from './assets/loading.svg?no-inline';
+
+import { Data } from 'dataclass';
+
+export const enum LoadingTypes {
+    IMAGE
+}
+
+export class Asset extends Data {
+    key: string;
+    url: string;
+    type: LoadingTypes;
+}
+
+export default class Loading extends Phaser.Scene {
+    private text: Phaser.GameObjects.Text;
+    public static readonly toLoad: Asset[] = [];
+
+    constructor() {
+        super("Loading");
+    }
+
+    public create() {
+        this.add.image(512, 384, "loadingBG");
+
+        this.text = this.add.text(512, 384, "", { color: "white" });
+
+        this.load.on("progress", (progress: number) => {
+            this.text.text = progress.toString();
+        });
+
+        this.scene.start("Example")
+    }
+
+    public preload() {
+        while (Loading.toLoad.length > 0) {
+            console.log(Loading.toLoad.length)
+            let asset = Loading.toLoad[Loading.toLoad.length-1];
+            console.log("loading",asset)
+            switch(asset.type) {
+                case LoadingTypes.IMAGE:
+                    this.load.image(asset.key, asset.url);
+            }
+            Loading.toLoad.pop();
+        }
+
+    }
+}
