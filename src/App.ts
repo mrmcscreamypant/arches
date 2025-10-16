@@ -3,6 +3,7 @@ import * as Phaser from 'phaser';
 import Example from './Example';
 import Boot from './Boot';
 import Loading from './Loading';
+import AwaitLoaderPlugin from 'phaser3-rex-plugins/plugins/awaitloader-plugin.js';
 
 export default class App extends Phaser.Game {
     constructor() {
@@ -14,6 +15,13 @@ export default class App extends Phaser.Game {
                 Example,
                 Loading
             ],
+            plugins: {
+                global: [{
+                    key: "rexAwaitLoader",
+                    plugin: AwaitLoaderPlugin,
+                    start: true
+                }]
+            },
             parent: "game-container",
             physics: {
                 default: 'arcade',
