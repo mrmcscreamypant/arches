@@ -1,7 +1,8 @@
 import * as Phaser from 'phaser';
 
 export const enum AssetTypes {
-    IMAGE
+    IMAGE,
+    TILEMAP
 }
 
 type Asset = {
@@ -46,7 +47,9 @@ export default class Loading extends Phaser.Scene {
         while (Loading.toLoad.length > 0) {
             let asset = Loading.toLoad[Loading.toLoad.length - 1];
             switch (asset.type) {
-                case AssetTypes.IMAGE: this.load.image(asset.key, asset.url);
+                default: throw TypeError("Bad asset type");
+                case AssetTypes.IMAGE: this.load.image(asset.key, asset.url); break;
+                case AssetTypes.TILEMAP: this.load.tilemapTiledJSON(asset.key, asset.url); break;
             }
             Loading.toLoad.pop();
         }
