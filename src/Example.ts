@@ -6,14 +6,12 @@ import phaserLogo from './assets/phaser-logo.png?url';
 export default class Example extends Phaser.Scene {
     constructor() {
         super("Example");
+        
         Loading.toLoad.push(Asset.create({
             key:"logo",
             url:phaserLogo,
             type:LoadingTypes.IMAGE
         }));
-    }
-
-    preload() {
     }
 
     create() {

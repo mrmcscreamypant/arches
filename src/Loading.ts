@@ -21,23 +21,23 @@ export default class Loading extends Phaser.Scene {
         super("Loading");
     }
 
-    public create() {
+    public init() {
         this.add.image(512, 384, "loadingBG");
 
         this.text = this.add.text(512, 384, "", { color: "white" });
 
         this.load.on("progress", (progress: number) => {
-            this.text.text = progress.toString();
+            this.text.text = `${progress*100}%`;
         });
+    }
 
+    public create() {
         this.scene.start("Example")
     }
 
     public preload() {
         while (Loading.toLoad.length > 0) {
-            console.log(Loading.toLoad.length)
             let asset = Loading.toLoad[Loading.toLoad.length-1];
-            console.log("loading",asset)
             switch(asset.type) {
                 case LoadingTypes.IMAGE:
                     this.load.image(asset.key, asset.url);
