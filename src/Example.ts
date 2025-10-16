@@ -25,7 +25,10 @@ export default class Example extends Phaser.Scene {
         logo.setCollideWorldBounds(true);
 
         const map = this.add.tilemap("debug_map");
-        map.addTilesetImage("debug");
+        const tiles = map.addTilesetImage("debug");
+        if (tiles) {
+            map.createLayer(0, tiles);
+        }
 
         particles.startFollow(logo);
     }
