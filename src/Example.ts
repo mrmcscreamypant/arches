@@ -1,17 +1,12 @@
 import * as Phaser from 'phaser';
-import Loading, { Asset, LoadingTypes } from './Loading';
-
-import phaserLogo from './assets/phaser-logo.png?url';
+import Loading from './Loading';
+import ExampleAssets from './assets/regestries/ExampleAssets';
 
 export default class Example extends Phaser.Scene {
     constructor() {
         super("Example");
-        
-        Loading.toLoad.push(Asset.create({
-            key:"logo",
-            url:phaserLogo,
-            type:LoadingTypes.IMAGE
-        }));
+
+        Loading.queneRegestry(ExampleAssets);
     }
 
     create() {
