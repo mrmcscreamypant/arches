@@ -1,5 +1,4 @@
 import * as Phaser from 'phaser';
-import loadingBackground from './assets/loading.svg?no-inline';
 
 import { Data } from 'dataclass';
 
@@ -44,6 +43,5 @@ export default class Loading extends Phaser.Scene {
             }
             Loading.toLoad.pop();
         }
-
     }
 }
