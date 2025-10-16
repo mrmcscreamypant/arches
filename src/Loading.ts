@@ -29,7 +29,7 @@ export default class Loading extends Phaser.Scene {
         this.text = this.add.text(512, 384, "", { color: "white" });
 
         this.load.on("progress", (progress: number) => {
-            this.text.text = `${progress * 100}%`;
+            this.text.text = `${Math.round(progress * 100)}%`;
         });
     }
 
