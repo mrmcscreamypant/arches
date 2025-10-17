@@ -38,29 +38,20 @@ export default class Loading extends Phaser.Scene {
     }
 
     public static queneRegestry(regestry: AssetRegestry) {
-        for (let asset of regestry.assets) {
-            Loading.toLoad.push(asset);
-        }
+        Loading.toLoad = Loading.toLoad.concat(regestry.assets);
     }
 
     public async preload() {
         while (Loading.toLoad.length > 0) {
             let asset = Loading.toLoad[0];
+            console.log(asset);
             switch (asset.type) {
                 default: throw TypeError("Bad asset type");
                 case AssetTypes.IMAGE:
                     this.load.image(asset.key, asset.url);
                     break;
                 case AssetTypes.TILEMAP:
-                    const mapfile: { tilesets: { image: string, name: string }[] } = await (await fetch(asset.url)).json();
                     this.load.tilemapTiledJSON(asset.key, asset.url);
-                    mapfile.tilesets.forEach((tileset) => {
-                        Loading.toLoad.push({
-                            key: tileset.name,
-                            url: tileset.image,
-                            type: AssetTypes.IMAGE
-                        });
-                    });
                     break;
             }
             Loading.toLoad = Loading.toLoad.slice(1);

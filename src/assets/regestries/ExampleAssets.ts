@@ -1,6 +1,5 @@
 import { AssetRegestry, AssetTypes } from "../../Loading";
-import phaserLogo from './../phaser-logo.png?url';
-import debugMap from '../maps/debug.json?url';
+import phaserLogo from '../phaser-logo.png?url';
 
 export default {
     assets: [
@@ -8,11 +7,6 @@ export default {
             key: "logo",
             url: phaserLogo,
             type: AssetTypes.IMAGE
-        },
-        {
-            key:"debug_map",
-            url:debugMap,
-            type: AssetTypes.TILEMAP
         }
     ]
 } satisfies AssetRegestry;
