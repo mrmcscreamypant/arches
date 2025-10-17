@@ -13,22 +13,22 @@ export default class App extends Phaser.Game {
             scene: [
                 Boot,
                 Example,
-                Loading
+                Loading,
             ],
             plugins: {
                 global: [{
-                    key: "rexAwaitLoader",
+                    key: 'rexAwaitLoader',
                     plugin: AwaitLoaderPlugin,
-                    start: true
-                }]
+                    start: true,
+                }],
             },
-            parent: "game-container",
+            parent: 'game-container',
             physics: {
                 default: 'arcade',
                 arcade: {
-                    gravity: { x: 0, y: 200 }
-                }
-            }
+                    gravity: { x: 0, y: 200 },
+                },
+            },
         });
     }
 }

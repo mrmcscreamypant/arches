@@ -1,12 +1,12 @@
-import { AssetRegestry, AssetTypes } from "../../Loading";
+import { AssetRegestry, AssetTypes } from '../../Loading';
 import phaserLogo from '../phaser-logo.png?url';
 
 export default {
     assets: [
         {
-            key: "logo",
+            key: 'logo',
             url: phaserLogo,
-            type: AssetTypes.IMAGE
-        }
-    ]
+            type: AssetTypes.IMAGE,
+        },
+    ],
 } satisfies AssetRegestry;

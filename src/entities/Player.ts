@@ -1,12 +1,17 @@
 import * as Phaser from 'phaser';
 import GameEntity from './GameEntity';
+import Example from '../Example';
 
 export default class Player extends GameEntity {
-    public constructor(scene: Phaser.Scene) {
-        super(scene, new Phaser.Math.Vector2(400,300), "player_atlas");
+    declare public scene: Example;
+
+    public constructor(scene: Example) {
+        super(scene, new Phaser.Math.Vector2(400, 300), 'player_atlas');
     }
 
-    public preUpdate(...args: any[]): void {
-        this.setTexture("player_atlas")
+    public preUpdate(time: number, delta: number): void {
+        if (this.scene.cursors?.down.isDown) {
+            this.y += delta;
+        }
     }
 }

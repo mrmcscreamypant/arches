@@ -10,9 +10,9 @@ export class Tileset {
             assets: [{
                 key: key,
                 url: url,
-                type: AssetTypes.IMAGE
-            }]
-        })
+                type: AssetTypes.IMAGE,
+            }],
+        });
     }
 }
 
@@ -29,15 +29,17 @@ export default class GameMap {
             assets: [{
                 key: this.key,
                 url: url,
-                type: AssetTypes.TILEMAP
-            }]
+                type: AssetTypes.TILEMAP,
+            }],
         });
     }
 
     public create() {
         const map = this.scene.add.tilemap(this.key);
-        const tiles = map.addTilesetImage("debug", this.tileset.key);
-        if (!tiles) { return; };
+        const tiles = map.addTilesetImage('debug', this.tileset.key);
+        if (!tiles) {
+            return;
+        };
         map.createLayer(0, tiles, 0, 0);
     }
 }
