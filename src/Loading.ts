@@ -2,13 +2,14 @@ import * as Phaser from 'phaser';
 
 export const enum AssetTypes {
     IMAGE,
-    TILEMAP
+    TILEMAP,
+    ATLAS
 }
 
 type Asset = {
     key: string;
     url: string;
-    type: AssetTypes
+    type: AssetTypes;
 }
 
 export type AssetRegestry = {
